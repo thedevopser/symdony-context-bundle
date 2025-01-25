@@ -160,18 +160,17 @@ YAML;
             $this->filesystem->dumpFile($routesPath, "");
         }
 
+        $routeType = version_compare(PHP_VERSION, '8.1.0', '>=') ? 'attribute' : 'annotation';
         $routesContent = file_get_contents($routesPath);
         $contextRoutes = <<<YAML
 {$context}_controllers:
     resource: ../../src/{$context}/Presenter/Controller/
-    type: attribute
-    prefix: /{$context}
-
+    type: {$routeType}
 YAML;
 
         if (!str_contains($routesContent, $context . '_controllers:')) {
             $this->filesystem->appendToFile($routesPath, "\n" . $contextRoutes);
-            $output->writeln(sprintf('<info>Configuration des routes mise à jour pour %s</info>', $context));
+            $output->writeln(sprintf('<info>Configuration des routes mise à jour pour %s (type: %s)</info>', $context, $routeType));
         }
     }
 }
