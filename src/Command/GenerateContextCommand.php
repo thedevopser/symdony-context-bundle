@@ -12,20 +12,22 @@ use Symfony\Component\HttpKernel\KernelInterface;
 class GenerateContextCommand extends Command
 {
     protected static $defaultName = 'thedevopser:generate:context';
+    protected static $defaultDescription = 'Génère une structure de dossiers pour un contexte métier';
+    
     private string $projectDir;
     private Filesystem $filesystem;
 
     public function __construct(KernelInterface $kernel)
     {
-        parent::__construct();
         $this->projectDir = $kernel->getProjectDir();
         $this->filesystem = new Filesystem();
+        parent::__construct(self::$defaultName);
     }
 
     protected function configure(): void
     {
         $this
-            ->setDescription('Génère une structure de dossiers pour un contexte métier')
+            ->setDescription(self::$defaultDescription)
             ->addArgument(
                 'context',
                 InputArgument::REQUIRED,
