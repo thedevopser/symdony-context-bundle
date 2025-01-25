@@ -1,3 +1,0 @@
-services:
-    TheDevOpser\SymfonyContextBundle\Command\GenerateContextCommand:
-        tags: ['console.command']
