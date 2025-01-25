@@ -2,7 +2,7 @@
 
 namespace TheDevOpser\SymfonyContextBundle;
 
-use Symfony\Component\CssSelector\XPath\Extension\ExtensionInterface;
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use TheDevOpser\SymfonyContextBundle\DependencyInjection\TheDevOpserSymfonyContextExtension;
 
