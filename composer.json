@@ -1,0 +1,34 @@
+{
+    "name": "thedevopser/symfony-context-bundle",
+    "type": "symfony-bundle",
+    "description": "Bundle Symfony pour générer une structure de dossiers contextuels",
+    "keywords": ["symfony", "bundle", "context", "generator", "ddd"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "TheDevOpser",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2|^8.0",
+        "symfony/framework-bundle": "^5.0|^6.0|^7.0",
+        "symfony/console": "^5.0|^6.0|^7.0",
+        "symfony/filesystem": "^5.0|^6.0|^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5|^9.5",
+        "symfony/phpunit-bridge": "^5.0|^6.0|^7.0",
+        "symfony/test-pack": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "TheDevOpser\\SymfonyContextBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TheDevOpser\\SymfonyContextBundle\\Tests\\": "tests/"
+        }
+    }
+}
