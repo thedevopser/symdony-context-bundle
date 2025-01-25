@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Filesystem\Filesystem;
-use TheDevOpser\SymfonyContextBundle\Command\GenerateContextCommand;
+use Thedevopser\SymfonyContextBundle\Command\GenerateContextCommand;
 
 class GenerateContextCommandTest extends TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\TheDevOpser\SymfonyContextBundle;
+namespace TheDevOpser\SymfonyContextBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
