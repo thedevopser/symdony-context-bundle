@@ -83,6 +83,7 @@ class GenerateContextCommand extends Command
 
         foreach ($directories as $directory) {
             $this->filesystem->mkdir($directory);
+            $this->filesystem->touch($directory . '/.gitkeep');
             $output->writeln(sprintf('Création du dossier : <info>%s</info>', $directory));
         }
     }
@@ -99,10 +100,7 @@ Ce dossier contient le code source lié au contexte métier {$context}.
 
 - `Domain/`: Le cœur métier
   - `Entity/`: Les entités et value objects
-  - `Interfaces/`: Les interfaces des repositories
-  - `Service/`: Les services métier
-  - `Event/`: Les événements domaine
-  - `Exception/`: Les exceptions métier
+  - `Interfaces/`: Les interfaces
 
 - `Application/`: La couche application
   - `Command/`: Les commandes et leurs handlers

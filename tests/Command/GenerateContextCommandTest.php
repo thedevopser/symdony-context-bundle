@@ -49,23 +49,34 @@ class GenerateContextCommandTest extends TestCase
         $this->assertEquals(0, $this->commandTester->getStatusCode());
         
         $contextPath = $this->projectDir . '/src/TestContext';
-        $this->assertDirectoryExists($contextPath);
-        $this->assertDirectoryExists($contextPath . '/Domain');
-        $this->assertDirectoryExists($contextPath . '/Domain/Entity');
-        $this->assertDirectoryExists($contextPath . '/Domain/Interfaces');
-        $this->assertDirectoryExists($contextPath . '/Application');
-        $this->assertDirectoryExists($contextPath . '/Application/Command');
-        $this->assertDirectoryExists($contextPath . '/Application/Query');
-        $this->assertDirectoryExists($contextPath . '/Application/Event');
-        $this->assertDirectoryExists($contextPath . '/Application/Service');
-        $this->assertDirectoryExists($contextPath . '/Infrastructure');
-        $this->assertDirectoryExists($contextPath . '/Infrastructure/Doctrine');
-        $this->assertDirectoryExists($contextPath . '/Infrastructure/Persistence');
-        $this->assertDirectoryExists($contextPath . '/Presenter');
-        $this->assertDirectoryExists($contextPath . '/Presenter/Controller');
-        $this->assertDirectoryExists($contextPath . '/Presenter/Form');
-        $this->assertDirectoryExists($contextPath . '/Presenter/Voter');
         
+        // Test directory structure
+        $directories = [
+            $contextPath,
+            $contextPath . '/Domain',
+            $contextPath . '/Domain/Entity',
+            $contextPath . '/Domain/Interfaces',
+            $contextPath . '/Application',
+            $contextPath . '/Application/Command',
+            $contextPath . '/Application/Query',
+            $contextPath . '/Application/Event',
+            $contextPath . '/Application/Service',
+            $contextPath . '/Infrastructure',
+            $contextPath . '/Infrastructure/Doctrine',
+            $contextPath . '/Infrastructure/Persistence',
+            $contextPath . '/Presenter',
+            $contextPath . '/Presenter/Controller',
+            $contextPath . '/Presenter/Form',
+            $contextPath . '/Presenter/Voter',
+        ];
+
+        // Vérifier l'existence des dossiers et des .gitkeep
+        foreach ($directories as $directory) {
+            $this->assertDirectoryExists($directory);
+            $this->assertFileExists($directory . '/.gitkeep');
+        }
+
+        // Reste des tests existants
         $this->assertFileExists($contextPath . '/README.md');
         $readmeContent = file_get_contents($contextPath . '/README.md');
         $this->assertStringContainsString('TestContext Context', $readmeContent);
@@ -88,7 +99,10 @@ class GenerateContextCommandTest extends TestCase
 
     public function testExecuteWithExistingContext(): void
     {
-        $this->filesystem->mkdir($this->projectDir.'/src/TestContext');
+        // Création d'un contexte existant avec .gitkeep
+        $contextPath = $this->projectDir.'/src/TestContext';
+        $this->filesystem->mkdir($contextPath);
+        $this->filesystem->touch($contextPath . '/.gitkeep');
 
         $this->commandTester->execute([
             'context' => 'TestContext'
